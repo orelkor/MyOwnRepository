@@ -26,7 +26,7 @@ namespace Lesson2
             
             
             FileDatabase db = new FileDatabase(@"C:\AutoBase\");
-            //db.SaveToDatabase(cars);
+            
             CarList.Items.AddRange(db.GetFromDatabase<Car>());
         }
 
@@ -40,7 +40,12 @@ namespace Lesson2
             if (cs.controlDate(dateTimePicker1.Value, dateTimePicker2.Value) == false) MessageBox.Show("Неверно введена дата.");
             else
             {
-                cs.makeRent(new Rent(dateTimePicker1.Value, dateTimePicker2.Value, (Car)CarList.SelectedItem));
+                if (cs.getAvailableCar(new Rent(dateTimePicker1.Value, dateTimePicker2.Value, (Car)CarList.SelectedItem)) == true)
+                {
+                    cs.makeRent(new Rent(dateTimePicker1.Value, dateTimePicker2.Value, (Car)CarList.SelectedItem));
+                    MessageBox.Show("Аренда выполнена успешно.");
+                }
+                else MessageBox.Show("Машина занята на данный период. Аренда невозможна.");
             }
         }
     }

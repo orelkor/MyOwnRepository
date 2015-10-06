@@ -8,14 +8,26 @@ namespace Lesson2
 {
     class CarService
     {
+        FileDatabase db = new FileDatabase(@"C:\AutoBase\");
+        Rent[] rents = new Rent[999];
+        int Count = 0;
         public void makeRent(Rent rent)
         {
-            
+            rents[Count] = rent;
+            db.SaveToDatabase(rents);
         }
 
-        public void getAvailableCar(Rent rent)
+        public bool getAvailableCar(Rent rent)
         {
-        
+            Rent[] rents = new Rent[999];
+            rents = db.GetFromDatabase<Rent>();
+            int j = 0;
+            for (int i = 0; i < 998; i++)
+            {
+                if (rents[i].car == rent.car && rents[i].DateFrom > rent.DateFrom && rents[i].DateTo < rent.DateTo) j++;
+            }
+            if (j > 0) return true;
+            else return false;
         }
 
         public string getInfo(Car car)

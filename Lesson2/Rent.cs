@@ -12,6 +12,11 @@ namespace Lesson2
         public DateTime DateTo { get; private set; }
         public Car car { get; private set; }
 
+        public Rent()
+        {
+
+        }
+
         public Rent(DateTime dt1, DateTime dt2, Car car)
         {
             DateFrom = dt1;
