@@ -13,7 +13,7 @@ namespace Lesson2
             
         }
 
-        public void getAvailableCar()
+        public void getAvailableCar(Rent rent)
         {
         
         }

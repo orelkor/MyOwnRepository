@@ -22,6 +22,8 @@ namespace Lesson2
             //         new Car("Лада", "7-77-77","красный")
 
             //     };
+
+            
             
             FileDatabase db = new FileDatabase(@"C:\AutoBase\");
             //db.SaveToDatabase(cars);
@@ -31,6 +33,12 @@ namespace Lesson2
         private void CarList_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             CarDescription.Text = cs.getInfo((Car)CarList.SelectedItem);
+        }
+
+        private void MakeAnOrderButton_Click(object sender, System.EventArgs e)
+        {
+            
+            cs.makeRent(new Rent(dateTimePicker1.Value,dateTimePicker2.Value,(Car)CarList.SelectedItem));
         }
     }
 }

@@ -97,6 +97,7 @@
             this.MakeAnOrderButton.TabIndex = 6;
             this.MakeAnOrderButton.Text = "Заказать";
             this.MakeAnOrderButton.UseVisualStyleBackColor = true;
+            this.MakeAnOrderButton.Click += new System.EventHandler(this.MakeAnOrderButton_Click);
             // 
             // CarRent
             // 
