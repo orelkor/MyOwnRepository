@@ -37,8 +37,11 @@ namespace Lesson2
 
         private void MakeAnOrderButton_Click(object sender, System.EventArgs e)
         {
-            
-            cs.makeRent(new Rent(dateTimePicker1.Value,dateTimePicker2.Value,(Car)CarList.SelectedItem));
+            if (cs.controlDate(dateTimePicker1.Value, dateTimePicker2.Value) == false) MessageBox.Show("Неверно введена дата.");
+            else
+            {
+                cs.makeRent(new Rent(dateTimePicker1.Value, dateTimePicker2.Value, (Car)CarList.SelectedItem));
+            }
         }
     }
 }
