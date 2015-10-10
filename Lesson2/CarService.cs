@@ -9,30 +9,51 @@ namespace Lesson2
     class CarService
     {
         FileDatabase db = new FileDatabase(@"C:\AutoBase\");
-        Rent[] rents = new Rent[999];
+        Rent[] rents = new Rent[9999];
         int Count = 0;
+
         public void makeRent(Rent rent)
         {
+            try
+            {
+                Count = int.Parse(System.IO.File.ReadAllText(@"C:\AutoBase\Count.txt"));
+            }
+
+            catch (Exception)
+            {
+
+            }
             rents[Count] = rent;
             db.SaveToDatabase(rents);
+            Count++;
+            System.IO.File.WriteAllText(@"C:\AutoBase\Count.fdb", Count.ToString());
+
         }
 
         public bool getAvailableCar(Rent rent)
         {
-            Rent[] rents = new Rent[999];
-            rents = db.GetFromDatabase<Rent>();
+             
             int j = 0;
-            for (int i = 0; i < 998; i++)
+
+            foreach (Rent item in rents)
             {
-                if (rents[i].car == rent.car && rents[i].DateFrom > rent.DateFrom && rents[i].DateTo < rent.DateTo) j++;
+
+
+                if (item != null)
+                {
+                    if ((item.car.ToString() != rent.car.ToString())) j=j;
+                    else if (((item.DateFrom > rent.DateFrom && item.DateFrom > rent.DateTo) || (item.DateTo < rent.DateFrom && item.DateTo < rent.DateTo)) == false) j++;
+                }
             }
-            if (j > 0) return true;
-            else return false;
-        }
+
+            if (j > 0) return false;
+            else return true;
+
+       }
 
         public string getInfo(Car car)
         {
-            return String.Format("Марка: {0}\nЦвет: {1}\nНомер: {2}", car.CarName, car.CarColor, car.CarNumber);
+            return string.Format("Марка: {0}\nЦвет: {1}\nНомер: {2}", car.CarName, car.CarColor, car.CarNumber);
         }
 
         public bool controlDate(DateTime dt1,DateTime dt2)
