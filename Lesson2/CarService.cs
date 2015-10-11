@@ -9,33 +9,33 @@ namespace Lesson2
     class CarService
     {
         FileDatabase db = new FileDatabase(@"C:\AutoBase\");
-        Rent[] rents = new Rent[9999];
-        int Count = 0;
+        ListRent listRent = new ListRent();
 
         public void makeRent(Rent rent)
         {
-            try
-            {
-                Count = int.Parse(System.IO.File.ReadAllText(@"C:\AutoBase\Count.txt"));
-            }
 
-            catch (Exception)
-            {
-
-            }
-            rents[Count] = rent;
+            listRent.Add(rent);
+            Rent[] rents = listRent.ToArray();
             db.SaveToDatabase(rents);
-            Count++;
-            System.IO.File.WriteAllText(@"C:\AutoBase\Count.fdb", Count.ToString());
+            
 
         }
 
-        public bool getAvailableCar(Rent rent)
+        public bool isCarAvailabele(Rent rent)
         {
              
             int j = 0;
 
-            foreach (Rent item in rents)
+            if (db.GetFromDatabase<Rent>().Length > 0)
+            {
+                Rent[] res = db.GetFromDatabase<Rent>();
+                foreach (var item in res)
+                {
+                    listRent.Add(item);
+                }
+            }
+
+            foreach (Rent item in listRent)
             {
 
 

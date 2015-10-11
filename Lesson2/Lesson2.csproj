@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="CarService.cs" />
     <Compile Include="FileDatabase.cs" />
+    <Compile Include="ListRent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rent.cs" />

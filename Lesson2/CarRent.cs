@@ -10,7 +10,7 @@ namespace Lesson2
             
         }
         
-        CarService cs = new CarService();
+        CarService carService = new CarService();
         FileDatabase db = new FileDatabase(@"C:\AutoBase\");
 
 
@@ -28,26 +28,25 @@ namespace Lesson2
 
             
             db.SaveToDatabase(cars);
-            db.GetFromDatabase<Rent>();
             CarList.Items.AddRange(db.GetFromDatabase<Car>());
         }
 
         private void CarList_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            CarDescription.Text = cs.getInfo((Car)CarList.SelectedItem);
+            CarDescription.Text = carService.getInfo((Car)CarList.SelectedItem);
         }
 
         private void MakeAnOrderButton_Click(object sender, System.EventArgs e)
         {
             
-            if (cs.controlDate(dateTimePicker1.Value, dateTimePicker2.Value) == false) MessageBox.Show("Неверно введена дата.");
+            if (carService.controlDate(dateTimePicker1.Value, dateTimePicker2.Value) == false) MessageBox.Show("Неверно введена дата.");
             else
             {
                 Rent rent = new Rent(dateTimePicker1.Value, dateTimePicker2.Value, (Car)CarList.SelectedItem);
 
-                if (cs.getAvailableCar(rent))
+                if (carService.isCarAvailabele(rent))
                 {
-                    cs.makeRent(rent);
+                    carService.makeRent(rent);
                     MessageBox.Show("Аренда выполнена успешно.");
                 }
                 else MessageBox.Show("Машина занята на данный период. Аренда невозможна.");
