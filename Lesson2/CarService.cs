@@ -9,59 +9,48 @@ namespace Lesson2
     class CarService
     {
         FileDatabase db = new FileDatabase(@"C:\AutoBase\");
-        ListRent listRent = new ListRent();
+        List<Rent> listRent = new List<Rent>();
+        List<Car> cars = new List<Car>();
 
         public void makeRent(Rent rent)
         {
-
             listRent.Add(rent);
-            Rent[] rents = listRent.ToArray();
-            db.SaveToDatabase(rents);
+            db.SaveToDatabase(listRent.ToArray());
+
+        }
+
+        public List<Car> getAvailableCars(DateTime TimeFrom, DateTime TimeTo)
+        {
+            List<Car> availableCars = new List<Car>();
             
-
-        }
-
-        public bool isCarAvailabele(Rent rent)
-        {
-             
-            int j = 0;
-
-            if (db.GetFromDatabase<Rent>().Length > 0)
+            if (db.GetFromDatabase<Rent>().Length != 0)
             {
-                Rent[] res = db.GetFromDatabase<Rent>();
-                foreach (var item in res)
+                listRent = db.GetFromDatabase<Rent>().ToList(); // проблема с получением из бд
+                cars = db.GetFromDatabase<Car>().ToList();
+
+                foreach (var itemCar in cars)
                 {
-                    listRent.Add(item);
+                    int k = 0;
+                    
+                    foreach (Rent itemRent in listRent)
+                    {
+                        if (itemRent.car.ToString() == itemCar.ToString())
+                        {
+                            if (TimeFrom > itemRent.DateFrom && TimeTo < itemRent.DateTo) k++;
+                        }
+                        else availableCars.Add(itemCar);
+                    }
+
+                    
+
+                    
                 }
+
+
+                
             }
-
-            foreach (Rent item in listRent)
-            {
-
-
-                if (item != null)
-                {
-                    if ((item.car.ToString() != rent.car.ToString())) j=j;
-                    else if (((item.DateFrom > rent.DateFrom && item.DateFrom > rent.DateTo) || (item.DateTo < rent.DateFrom && item.DateTo < rent.DateTo)) == false) j++;
-                }
-            }
-
-            if (j > 0) return false;
-            else return true;
-
-       }
-
-        public string getInfo(Car car)
-        {
-            return string.Format("Марка: {0}\nЦвет: {1}\nНомер: {2}", car.CarName, car.CarColor, car.CarNumber);
+            else availableCars.AddRange(db.GetFromDatabase<Car>());
+            return availableCars;
         }
-
-        public bool controlDate(DateTime dt1,DateTime dt2)
-        {
-            if (dt1 > dt2 || dt1 < DateTime.Now) return false;
-            else return true;
-        }
-
-
     }
 }

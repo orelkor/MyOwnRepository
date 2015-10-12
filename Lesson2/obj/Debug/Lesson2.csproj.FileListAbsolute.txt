@@ -20,3 +20,14 @@ C:\Users\test\Desktop\lesson2\Lesson2\obj\Debug\Lesson2.csprojResolveAssemblyRef
 C:\Users\test\Desktop\lesson2\Lesson2\obj\Debug\Lesson2.CarRent.resources
 C:\Users\test\Desktop\lesson2\Lesson2\obj\Debug\Lesson2.Properties.Resources.resources
 C:\Users\test\Desktop\lesson2\Lesson2\obj\Debug\Lesson2.csproj.GenerateResource.Cache
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\bin\Debug\Lesson2.exe.config
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\obj\Debug\Lesson2.exe
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\obj\Debug\Lesson2.pdb
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\obj\Debug\Lesson2.csprojResolveAssemblyReference.cache
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\obj\Debug\Lesson2.CarRent.resources
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\obj\Debug\Lesson2.Properties.Resources.resources
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\obj\Debug\Lesson2.csproj.GenerateResource.Cache
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\bin\Debug\Lesson2.exe
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\bin\Debug\Lesson2.pdb
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Korolev Serey\Desktop\Лига\lesson2\Lesson2\bin\Debug\Newtonsoft.Json.xml

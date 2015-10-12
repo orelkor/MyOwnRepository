@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lesson2
+
+namespace TestBase
 {
-    class ListRent : List<Rent>
+    class Program
     {
+        static void Main(string[] args)
+        {
+            File
+        }
     }
 }

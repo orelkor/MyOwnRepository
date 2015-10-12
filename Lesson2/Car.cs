@@ -19,11 +19,17 @@ namespace Lesson2
             CarNumber = carnumber;
         }
 
+        public string getInfo()
+        {
+            return string.Format("Марка: {0}\nЦвет: {1}\nНомер: {2}", CarName, CarColor, CarNumber);
+        }
+
         public override string ToString()
         {
             return CarName.ToString();
         }
 
-       
+        
+
     }
 }
