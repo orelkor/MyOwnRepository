@@ -64,7 +64,7 @@ namespace Lesson2
 
 		private static T DeserializeEntity<T>(string serializedEntity)
 		{
-			return JsonConvert.DeserializeObject<T>(serializedEntity);
+			return JsonConvert.DeserializeObject<T>(serializedEntity, new JsonSerializerSettings() { DateFormatString = "dd.MM.yyyy" } );
 		}
 
 		private readonly DirectoryInfo _databaseDirectory;

@@ -12,10 +12,10 @@ namespace Lesson2
         public DateTime DateTo { get; private set; }
         public Car car { get; private set; }
 
-           public Rent(DateTime dt1, DateTime dt2, Car car)
+           public Rent(DateTime DateFrom, DateTime DateTo, Car car)
         {
-            DateFrom = dt1;
-            DateTo = dt2;
+            this.DateFrom = DateFrom;
+            this.DateTo = DateTo;
             this.car = car;
         }
     }

@@ -27,9 +27,9 @@ namespace Lesson2
 
                  };
 
-            
-            db.SaveToDatabase(cars);
-            CarList.Items.AddRange(db.GetFromDatabase<Car>());
+
+            carService.getAllCars(cars);
+            CarList.Items.AddRange(carService.getAvailableCars(dateTimePicker1.Value, dateTimePicker2.Value).ToArray());
         }
         
         private void CarList_SelectedIndexChanged(object sender, System.EventArgs e)

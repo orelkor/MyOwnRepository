@@ -19,13 +19,20 @@ namespace Lesson2
 
         }
 
-        public List<Car> getAvailableCars(DateTime TimeFrom, DateTime TimeTo)
+        public Car[] getAllCars(Car[] cars)
+        {
+            cars = db.GetFromDatabase<Car>();
+            return cars;
+        }
+
+        public List<Car> getAvailableCars(DateTime TimeFrom, DateTime TimeTo) // логика
         {
             List<Car> availableCars = new List<Car>();
             
             if (db.GetFromDatabase<Rent>().Length != 0)
             {
-                listRent = db.GetFromDatabase<Rent>().ToList(); // проблема с получением из бд
+               
+                listRent = db.GetFromDatabase<Rent>().ToList();
                 cars = db.GetFromDatabase<Car>().ToList();
 
                 foreach (var itemCar in cars)
