@@ -38,17 +38,20 @@ namespace Lesson2
                 foreach (var itemCar in cars)
                 {
                     int k = 0;
-                    
+                    int j = 0;
                     foreach (Rent itemRent in listRent)
                     {
                         if (itemRent.car.ToString() == itemCar.ToString())
                         {
-                            if (TimeFrom > itemRent.DateFrom && TimeTo < itemRent.DateTo) k++;
+                            if (((itemRent.DateTo > TimeTo && TimeTo > itemRent.DateFrom) || (itemRent.DateTo > TimeFrom && TimeFrom > itemRent.DateFrom))) j++;
+                            
                         }
-                        else availableCars.Add(itemCar);
+                        else k++;
+                        
+                        
                     }
 
-                    
+                    if (k == listRent.Count || j == 0) availableCars.Add(itemCar);
 
                     
                 }
